@@ -1,6 +1,5 @@
-import React, {useState, useEffect, createContext} from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import TabNav from './TabNav';
 import TabContent from './TabContent';
 
@@ -10,15 +9,16 @@ function ContactTab(props) {
   const [contacts, setContacts] = useState([]);
   const [activeTab, setActiveTab] = useState('a');
   const [showContent, setShowContent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios.get(`${props.config.userUrl}?results=${props.config.numberCards}`)
-      .then((response) => {
-        setContacts(sortAlphabetically(response.data.results));
-      }, (err) => {
-        console.log(err)
-      }
-      );
+    setLoading(true);
+    fetch(`${props.config.userUrl}?results=${props.config.numberCards}`)
+      .then(resp => resp.json())
+      .then(data => {
+        setContacts(sortAlphabetically(data.results));
+      })
+      .catch(err => console.log(err));
   }, [props.config.userUrl, props.config.numberCards]);
 
   function sortAlphabetically(data) {
@@ -29,14 +29,14 @@ function ContactTab(props) {
   }
 
   return (
-    <div style={{width: '85%', margin: 'auto'}}>
-    {contacts.length ? (
-      <ContactContext.Provider
-        value={{contacts, tabs: props.config.tabs, activeTab, setActiveTab, showContent, setShowContent}}>
-        <TabNav />
-        <TabContent />
-      </ContactContext.Provider>
-    ) : null}
+    <div className="contact-tab">
+      {contacts.length ? (
+        <ContactContext.Provider
+          value={{ contacts, tabs: props.config.tabs, activeTab, setActiveTab, showContent, setShowContent }}>
+          <TabNav />
+          <TabContent />
+        </ContactContext.Provider>
+      ) : <h4 className="t-a-center">Loading Contacts...</h4>}
     </div>
   );
 }

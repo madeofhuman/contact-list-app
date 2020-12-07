@@ -4,21 +4,29 @@ import PropTypes from 'prop-types';
 function Tab(props) {
   const active = props.isActive ? 'active' : '';
 
+  function renderTabContent(count) {
+    if (count > 0) {
+      return (
+        <a className={"nav-link " + active} href={`#${props.tab}`} onClick={() => props.switchTabs(props.tab)}>
+          <span className="tab-letter">{props.tab}</span>
+          &nbsp;
+          <sub>{props.count}</sub>
+        </a>
+      )
+    } else {
+      return (
+        <span className="nav-link disabled" disabled>
+          <span className="tab-letter">{props.tab}</span>
+          &nbsp;
+          <sub>{props.count}</sub>
+        </span>
+      )
+    }
+  }
+
   return (
     <li className="nav-item" key={props.tab}>
-      {props.count > 0 ? (
-        <a className={"nav-link " + active} href={`#${props.tab}`} onClick={() => props.switchTabs(props.tab)}>
-          <span style={{fontSize: '1.5em'}}>{props.tab}</span>
-          &nbsp;
-          <sub>{props.count}</sub>
-        </a>
-      ) : (
-        <a className="nav-link disabled" href={`#${props.tab}`} disabled>
-          <span style={{fontSize: '1.5em'}}>{props.tab}</span>
-          &nbsp;
-          <sub>{props.count}</sub>
-        </a>
-      )}
+      {renderTabContent(props.count)}
     </li>
   );
 }

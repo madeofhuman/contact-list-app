@@ -29,33 +29,11 @@ function TabContent() {
     setSelectedContact({});
   }
 
-  const containerStyle = {
-    paddingTop: '50px',
-    borderLeft: '1px solid #8080803d',
-    borderRight: '1px solid #8080803d',
-    borderBottom: '1px solid #8080803d',
-    paddingBottom: '10px'
-  };
-
-  const ulStyle = {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gridGap: '1rem',
-    listStyle: 'none',
-    padding: '0 40px'
-  };
-
-  const liStyle = {
-    borderBottom: '1px dashed grey',
-    padding: '0 0 7px 8px',
-    cursor: 'pointer'
-  };
-
   return (
-    <div style={containerStyle}>
-      <ul style={ulStyle}>
+    <div className="tab-content">
+      <ul className="contact-list">
         {activeContacts?.map(contact => {
-          return <li style={liStyle} key={contact.login.uuid} onClick={(e) => displayContact(e, contact)}>{contact.name.first}, {contact.name.last.toUpperCase()}</li>
+          return <li className="contact-item" key={contact.login.uuid} onClick={(e) => displayContact(e, contact)}>{contact.name.first}, {contact.name.last.toUpperCase()}</li>
         })}
       </ul>
       {showContent && selectedContact && popupLayoutData ? (

@@ -1,3 +1,115 @@
-// .App {
-//   text-align: center;
-// }
+a {
+  text-decoration: none;
+  color: #3a71ca;
+}
+
+.t-a-center {
+  text-align: center;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-tab {
+  width: max-content;
+  margin: 0 auto;
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .nav-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  
+    .nav-item {
+      margin-bottom: -1px;
+  
+      .nav-link {
+        display: block;
+        padding: .5rem 1rem;
+        border: 1px solid transparent;
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+        color: rgb(37, 37, 37);
+  
+        .tab-letter {
+          font-size: 1.2em;
+        }
+      }
+  
+      .active {
+        color: #3a71ca;
+        background-color: #fff;
+        border-color: #dee2e6 #dee2e6 #fff;
+      }
+  
+      .disabled {
+        color: #bebebe;;
+        cursor: default;
+      }
+    }
+  }
+
+  .tab-content {
+    padding-top: 50px;
+    border-left: 1px solid #8080803d;
+    border-right: 1px solid #8080803d;
+    border-bottom: 1px solid #8080803d;
+    padding-bottom: 10px;
+
+    .contact-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
+      list-style: none;
+      padding: 0 40px;
+    }
+
+    .contact-item {
+      border-bottom: 1px dashed grey;
+      padding: 0 0 7px 8px;
+      cursor: pointer;
+    }
+
+    .contact-popup {
+      z-index: 1;
+      position: absolute;
+      height: 300px;
+      border: 1px solid gray;
+      background-color: #fff;
+      display: flex;
+
+      .contact-column {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+      }
+
+      .username-strip {
+        transform: rotate(90deg);
+        width: auto;
+        background-color: red;
+        height: max-content;
+        color: #fff;
+        padding: 5px;
+        position: absolute;
+        right: -50px;
+        z-index: 2;
+        top: 80px;
+      }
+    }
+  }
+}
