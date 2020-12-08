@@ -5,7 +5,12 @@ services:
       context: .
     ports:
       - "3000:3000"
-    container_name: react-ui
     volumes:
        - "/app/node_modules"
        - "./:/app"
+  test:
+    build:
+      context: .
+    environment:
+      - CI=true
+    command: npm test
