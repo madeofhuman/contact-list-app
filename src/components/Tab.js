@@ -7,7 +7,7 @@ function Tab(props) {
   function renderTabContent(count) {
     if (count > 0) {
       return (
-        <button className={"nav-link " + active} onClick={() => props.switchTabs(props.tab)}>
+        <button className={"nav-link " + active} data-testid={props.tab} onClick={() => props.switchTabs(props.tab)}>
           <span className="tab-letter">{props.tab}</span>
           &nbsp;
           <sub>{props.count}</sub>
@@ -15,7 +15,7 @@ function Tab(props) {
       )
     } else {
       return (
-        <button className="nav-link disabled" disabled>
+        <button className="nav-link disabled" data-testid={props.tab} disabled>
           <span className="tab-letter">{props.tab}</span>
           &nbsp;
           <sub>{props.count}</sub>

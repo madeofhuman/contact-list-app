@@ -11,7 +11,7 @@ function ContactPopup(props) {
   return (
     <div style={dynamicStyle} className="contact-popup">
       <div className="flex">
-        <button className="close-btn" onClick={props.closePopup}>X</button>
+        <button className="close-btn" data-testid="popup-close" onClick={props.closePopup}>X</button>
         <img src={props.contact.picture.large} alt="Profile photo" />
         <div className="flex-col">
           <h1>{props.contact.name.last.toUpperCase()}, {props.contact.name.first.toLowerCase()}</h1>
@@ -39,6 +39,31 @@ ContactPopup.propTypes = {
     left: PropTypes.number,
   }),
   closePopup: PropTypes.func,
+  contact: PropTypes.shape({
+    picture: PropTypes.shape({
+      large: PropTypes.string,
+    }),
+    contact: PropTypes.shape({
+      name: PropTypes.shape({
+        last: PropTypes.string,
+        first: PropTypes.string,
+      }),
+      email: PropTypes.string,
+      phone: PropTypes.string,
+      location: PropTypes.shape({
+        street: PropTypes.shape({
+          number: PropTypes.number,
+          name: PropTypes.string
+        }),
+        city: PropTypes.string,
+        state: PropTypes.string,
+        postcode: PropTypes.number
+      }),
+      login: PropTypes.shape({
+        username: PropTypes.string,
+      }),
+    }),
+  }),
 }
 
 export default ContactPopup;

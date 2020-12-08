@@ -33,7 +33,13 @@ function TabContent() {
     <div className="tab-content">
       <div className="contact-list">
         {activeContacts?.map(contact => {
-          return <button className="contact-item" key={contact.login.uuid} onClick={(e) => displayContact(e, contact)}>{contact.name.first}, {contact.name.last.toUpperCase()}</button>
+          return (<button
+                    className="contact-item"
+                    key={contact.login.uuid}
+                    data-testid={contact.login.uuid}
+                    onClick={(e) => displayContact(e, contact)}>
+                      {contact.name.first}, {contact.name.last.toUpperCase()}
+                  </button>);
         })}
       </div>
       {showContent && selectedContact && popupLayoutData ? (

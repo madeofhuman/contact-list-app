@@ -3,3 +3,6 @@
  * Allows for things like expect(element).toHaveTextContent(/react/i)
  */
 import '@testing-library/jest-dom';
+import fetchMock from "jest-fetch-mock";
+
+fetchMock.enableMocks();
