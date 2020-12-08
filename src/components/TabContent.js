@@ -31,11 +31,11 @@ function TabContent() {
 
   return (
     <div className="tab-content">
-      <ul className="contact-list">
+      <div className="contact-list">
         {activeContacts?.map(contact => {
-          return <li className="contact-item" key={contact.login.uuid} onClick={(e) => displayContact(e, contact)}>{contact.name.first}, {contact.name.last.toUpperCase()}</li>
+          return <button className="contact-item" key={contact.login.uuid} onClick={(e) => displayContact(e, contact)}>{contact.name.first}, {contact.name.last.toUpperCase()}</button>
         })}
-      </ul>
+      </div>
       {showContent && selectedContact && popupLayoutData ? (
         <ContactPopup contact={selectedContact} layoutData={popupLayoutData} closePopup={closePopup} />
       ) : null}

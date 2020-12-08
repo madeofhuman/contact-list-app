@@ -7,27 +7,27 @@ function Tab(props) {
   function renderTabContent(count) {
     if (count > 0) {
       return (
-        <a className={"nav-link " + active} href={`#${props.tab}`} onClick={() => props.switchTabs(props.tab)}>
+        <button className={"nav-link " + active} onClick={() => props.switchTabs(props.tab)}>
           <span className="tab-letter">{props.tab}</span>
           &nbsp;
           <sub>{props.count}</sub>
-        </a>
+        </button>
       )
     } else {
       return (
-        <span className="nav-link disabled" disabled>
+        <button className="nav-link disabled" disabled>
           <span className="tab-letter">{props.tab}</span>
           &nbsp;
           <sub>{props.count}</sub>
-        </span>
+        </button>
       )
     }
   }
 
   return (
-    <li className="nav-item" key={props.tab}>
+    <span className="nav-item" key={props.tab}>
       {renderTabContent(props.count)}
-    </li>
+    </span>
   );
 }
 

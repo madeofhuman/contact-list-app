@@ -16,7 +16,7 @@ function TabNav() {
 
   return (
     <div>
-      <ul className="nav nav-tabs">
+      <div className="nav nav-tabs">
         {tabs?.map((tab) => {
           return (
             <Tab
@@ -27,7 +27,7 @@ function TabNav() {
               switchTabs={switchTabs} />
           );
         })}
-      </ul>
+      </div>
     </div>
   );
 }

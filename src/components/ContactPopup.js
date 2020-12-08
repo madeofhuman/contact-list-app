@@ -10,8 +10,8 @@ function ContactPopup(props) {
 
   return (
     <div style={dynamicStyle} className="contact-popup">
-      <a href='#' onClick={props.closePopup}>X</a>
-      <div><img src={props.contact.picture.large} /></div>
+      <button className="close-btn" onClick={props.closePopup}>X</button>
+      <img src={props.contact.picture.large} />
       <div className="flex-col">
         <h1>{props.contact.name.last.toUpperCase()}, {props.contact.name.first.toLowerCase()}</h1>
         <div className="contact-column">
