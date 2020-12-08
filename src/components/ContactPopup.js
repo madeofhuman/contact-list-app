@@ -10,21 +10,23 @@ function ContactPopup(props) {
 
   return (
     <div style={dynamicStyle} className="contact-popup">
-      <button className="close-btn" onClick={props.closePopup}>X</button>
-      <img src={props.contact.picture.large} />
-      <div className="flex-col">
-        <h1>{props.contact.name.last.toUpperCase()}, {props.contact.name.first.toLowerCase()}</h1>
-        <div className="contact-column">
-          <b>e-mail</b>{props.contact.email}
-          <b>phone</b>{props.contact.phone}
-          <b>street</b>{props.contact.location.street.number}&nbsp;{props.contact.location.street.name}
-          <b>city</b>{props.contact.location.city}
-          <b>state</b>{props.contact.location.state}
-          <b>postcode</b>{props.contact.location.postcode}
+      <div className="flex">
+        <button className="close-btn" onClick={props.closePopup}>X</button>
+        <img src={props.contact.picture.large} alt="Profile photo" />
+        <div className="flex-col">
+          <h1>{props.contact.name.last.toUpperCase()}, {props.contact.name.first.toLowerCase()}</h1>
+          <div className="contact-column">
+            <b>e-mail</b>{props.contact.email}
+            <b>phone</b>{props.contact.phone}
+            <b>street</b>{props.contact.location.street.number}&nbsp;{props.contact.location.street.name}
+            <b>city</b>{props.contact.location.city}
+            <b>state</b>{props.contact.location.state}
+            <b>postcode</b>{props.contact.location.postcode}
+          </div>
         </div>
       </div>
       <div className="username-strip">
-        USERNAME {props.contact.login.username}
+        USERNAME <small>{props.contact.login.username}</small>
       </div>
     </div>
   );
